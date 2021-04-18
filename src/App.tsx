@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useCallback } from 'react';
 import './App.css';
+import BaseButton from './components/atoms/BaseButton';
 
-function App() {
+const App = () => {
+  const handleClick = useCallback(() => {
+    alert('click!!');
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <p>This is React x Typescript template.</p>
       </header>
+      <main>
+        <BaseButton label="click" onClick={handleClick} />
+      </main>
     </div>
   );
-}
+};
 
 export default App;
