@@ -18,6 +18,10 @@ module.exports = {
         node: true,
         es6: true,
       },
+      plugins: [
+        'import',
+        'unused-imports',
+      ],
       extends: [
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended', // TypeScript rules
@@ -45,6 +49,19 @@ module.exports = {
 
         // Includes .prettierrc.js rules
         'prettier/prettier': ['error', {}, { usePrettierrc: true }],
+
+        // About import
+        'import/order': [
+          'warn',
+          {
+            'groups': [['builtin', 'external', 'internal']],
+            'newlines-between': 'never',
+            'alphabetize': {
+              'order': 'asc'
+            }
+          }
+        ],
+        'unused-imports/no-unused-imports': 'error',
       },
     },
   ],

@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react';
-import './App.css';
 import BaseButton from './components/atoms/BaseButton';
 
 const App = () => {
