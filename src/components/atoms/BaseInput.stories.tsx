@@ -16,9 +16,10 @@ export default {
 
 const Template: Story<BaseInputProps> = (args) => <BaseInput {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
-  label: 'default',
+export const Outlined = Template.bind({});
+Outlined.args = {
+  label: 'outlined',
+  variant: 'outlined',
 };
 
 export const Disabled = Template.bind({});
@@ -27,8 +28,14 @@ Disabled.args = {
   disabled: true,
 };
 
-export const Outlined = Template.bind({});
-Outlined.args = {
-  label: 'outlined',
-  variant: 'outlined',
+export const Standard = Template.bind({});
+Standard.args = {
+  label: 'standard',
+  variant: 'standard',
+};
+
+export const Filled = Template.bind({});
+Filled.args = {
+  label: 'filled',
+  variant: 'filled',
 };

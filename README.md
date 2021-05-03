@@ -8,3 +8,4 @@
 - styled-components
 - prettier
 - storybook
+- react-hook-form

@@ -1,0 +1,106 @@
+import { Grid, Typography } from '@material-ui/core';
+import React from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import styled from 'styled-components';
+import { BaseButton } from '../atoms/BaseButton';
+import { BaseInput } from '../atoms/BaseInput';
+
+type FormValues = {
+  email: string;
+  password: string;
+};
+
+const RegisterForm: React.VFC = () => {
+  const {
+    control,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<FormValues>();
+
+  return (
+    <Wrapper>
+      <Container>
+        <form onSubmit={handleSubmit((data) => console.log(data))}>
+          <Grid container spacing={4} justify="center" alignItems="center">
+            <Grid item xs={12}>
+              <Controller
+                name="email"
+                control={control}
+                defaultValue=""
+                rules={{ required: true }}
+                render={({ field }) => (
+                  <StyledInput label="Email" error={!!errors.email} {...field} />
+                )}
+              />
+              {errors?.email?.type === 'required' && (
+                <ErrorMessage>Email is required.</ErrorMessage>
+              )}
+            </Grid>
+            <Grid item xs={12}>
+              <Controller
+                name="password"
+                control={control}
+                defaultValue=""
+                rules={{ required: true, minLength: 8 }}
+                render={({ field }) => (
+                  <StyledInput
+                    label="Password"
+                    type="password"
+                    error={!!errors.password}
+                    {...field}
+                  />
+                )}
+              />
+              {errors?.password?.type === 'required' && (
+                <ErrorMessage>Password is required.</ErrorMessage>
+              )}
+              {errors?.password?.type === 'minLength' && (
+                <ErrorMessage>Password needs 8 characters at least.</ErrorMessage>
+              )}
+            </Grid>
+          </Grid>
+          <ButtonWrapper>
+            <StyledButton label="Register" type="submit" onClick={() => undefined} />
+          </ButtonWrapper>
+        </form>
+      </Container>
+    </Wrapper>
+  );
+};
+
+const Wrapper = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+`;
+
+const Container = styled.div`
+  border: 4px solid #ccc;
+  border-radius: 8px;
+  height: 360px;
+  padding: 80px 96px;
+  width: 400px;
+`;
+
+const ButtonWrapper = styled.div`
+  margin-top: 48px;
+  text-align: center;
+`;
+
+const ErrorMessage = styled(Typography)`
+  && {
+    font-size: 12px;
+    color: #f44336;
+  }
+`;
+
+const StyledInput = styled(BaseInput)`
+  width: 100%;
+`;
+
+const StyledButton = styled(BaseButton)`
+  width: 240px;
+`;
+
+const memorizedRegisterForm = React.memo(RegisterForm);
+export { memorizedRegisterForm as RegisterForm };

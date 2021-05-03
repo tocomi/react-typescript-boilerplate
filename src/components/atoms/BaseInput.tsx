@@ -3,17 +3,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 export type BaseInputProps = {
-  variant?: React.ComponentProps<typeof TextField>['variant'];
   label?: string;
   disabled?: boolean;
-};
+} & React.ComponentProps<typeof TextField>;
 
 const BaseInput: React.VFC<BaseInputProps> = ({
-  variant = 'standard',
+  variant = 'outlined',
   label = '',
-  disabled = false,
+  ...restProps
 }) => {
-  return <StyledTextField variant={variant} label={label} disabled={disabled} />;
+  return <StyledTextField variant={variant} label={label} {...restProps} />;
 };
 
 const StyledTextField = styled(TextField)`
