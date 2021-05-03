@@ -27,21 +27,22 @@ const RegisterForm: React.VFC = () => {
                 name="email"
                 control={control}
                 defaultValue=""
-                rules={{ required: true }}
+                rules={{ required: 'Email is required.' }}
                 render={({ field }) => (
                   <StyledInput label="Email" error={!!errors.email} {...field} />
                 )}
               />
-              {errors?.email?.type === 'required' && (
-                <ErrorMessage>Email is required.</ErrorMessage>
-              )}
+              {!!errors?.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
             </Grid>
             <Grid item xs={12}>
               <Controller
                 name="password"
                 control={control}
                 defaultValue=""
-                rules={{ required: true, minLength: 8 }}
+                rules={{
+                  required: 'Password is required.',
+                  minLength: { value: 8, message: 'Password needs 8 characters at least.' },
+                }}
                 render={({ field }) => (
                   <StyledInput
                     label="Password"
@@ -51,12 +52,7 @@ const RegisterForm: React.VFC = () => {
                   />
                 )}
               />
-              {errors?.password?.type === 'required' && (
-                <ErrorMessage>Password is required.</ErrorMessage>
-              )}
-              {errors?.password?.type === 'minLength' && (
-                <ErrorMessage>Password needs 8 characters at least.</ErrorMessage>
-              )}
+              {!!errors?.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
             </Grid>
           </Grid>
           <ButtonWrapper>
@@ -75,7 +71,7 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  border: 4px solid #ccc;
+  border: 4px solid #999;
   border-radius: 8px;
   height: 360px;
   padding: 80px 96px;
