@@ -1,23 +1,25 @@
 import { Button } from '@material-ui/core';
 import React from 'react';
-import styled from 'styled-components';
 
-type BaseButtonProps = {
+export type BaseButtonProps = {
   label: string;
   onClick: () => void;
-  width: number;
+  variant?: React.ComponentProps<typeof Button>['variant'];
+  color?: React.ComponentProps<typeof Button>['color'];
 };
 
-const BaseButton: React.VFC<BaseButtonProps> = ({ label, onClick, width }) => {
+const BaseButton: React.VFC<BaseButtonProps> = ({
+  label,
+  onClick,
+  variant = 'contained',
+  color = 'primary',
+}) => {
   return (
-    <StyledButton width={width} variant="contained" onClick={onClick}>
+    <Button onClick={onClick} variant={variant} color={color}>
       {label}
-    </StyledButton>
+    </Button>
   );
 };
 
-const StyledButton = styled(Button)<{ width: number }>`
-  width: ${(props) => props.width}px;
-`;
-
-export default React.memo(BaseButton);
+const memorizedBaseButton = React.memo(BaseButton);
+export { memorizedBaseButton as BaseButton };

@@ -11,7 +11,7 @@ const App = () => {
         <p>This is React x Typescript template.</p>
       </header>
       <main>
-        <BaseButton label="click" onClick={handleClick} width={240} />
+        <BaseButton label="click" onClick={handleClick} />
       </main>
     </div>
   );
