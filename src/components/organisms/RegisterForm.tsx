@@ -15,7 +15,7 @@ const RegisterForm: React.VFC = () => {
     control,
     formState: { errors },
     handleSubmit,
-  } = useForm<FormValues>();
+  } = useForm<FormValues>({ mode: 'onBlur' });
 
   return (
     <Wrapper>

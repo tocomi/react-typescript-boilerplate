@@ -2,18 +2,13 @@ import { TextField } from '@material-ui/core';
 import React from 'react';
 import styled from 'styled-components';
 
-export type BaseInputProps = {
-  label?: string;
-  disabled?: boolean;
-} & React.ComponentProps<typeof TextField>;
+export type BaseInputProps = React.ComponentProps<typeof TextField>;
 
-const BaseInput: React.VFC<BaseInputProps> = ({
-  variant = 'outlined',
-  label = '',
-  ...restProps
-}) => {
-  return <StyledTextField variant={variant} label={label} {...restProps} />;
-};
+const BaseInput = React.forwardRef<HTMLDivElement, BaseInputProps>(
+  ({ variant = 'outlined', ...restProps }, ref) => {
+    return <StyledTextField variant={variant} ref={ref} {...restProps} />;
+  }
+);
 
 const StyledTextField = styled(TextField)`
   .MuiOutlinedInput-notchedOutline {

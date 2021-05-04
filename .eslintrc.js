@@ -62,6 +62,9 @@ module.exports = {
           }
         ],
         'unused-imports/no-unused-imports': 'error',
+
+        // allow arrow function component
+        'react/display-name': 'off',
       },
     },
   ],
