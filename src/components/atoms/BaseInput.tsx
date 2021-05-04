@@ -2,11 +2,18 @@ import { TextField } from '@material-ui/core';
 import React from 'react';
 import styled from 'styled-components';
 
-export type BaseInputProps = React.ComponentProps<typeof TextField>;
+export type BaseInputProps = { dataTestId?: string } & React.ComponentProps<typeof TextField>;
 
 const BaseInput = React.forwardRef<HTMLDivElement, BaseInputProps>(
-  ({ variant = 'outlined', ...restProps }, ref) => {
-    return <StyledTextField variant={variant} ref={ref} {...restProps} />;
+  ({ dataTestId, variant = 'outlined', ...restProps }, ref) => {
+    return (
+      <StyledTextField
+        variant={variant}
+        ref={ref}
+        inputProps={{ 'data-testid': dataTestId }}
+        {...restProps}
+      />
+    );
   }
 );
 

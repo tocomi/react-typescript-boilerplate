@@ -9,3 +9,4 @@
 - prettier
 - storybook
 - react-hook-form
+- react-testing-library

@@ -29,10 +29,12 @@ const RegisterForm: React.VFC = () => {
                 defaultValue=""
                 rules={{ required: 'Email is required.' }}
                 render={({ field }) => (
-                  <StyledInput label="Email" error={!!errors.email} {...field} />
+                  <StyledInput dataTestId="email" label="Email" error={!!errors.email} {...field} />
                 )}
               />
-              {!!errors?.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
+              {!!errors?.email && (
+                <ErrorMessage data-testid="emailErrorMessage">{errors.email.message}</ErrorMessage>
+              )}
             </Grid>
             <Grid item xs={12}>
               <Controller
@@ -45,6 +47,7 @@ const RegisterForm: React.VFC = () => {
                 }}
                 render={({ field }) => (
                   <StyledInput
+                    dataTestId="password"
                     label="Password"
                     type="password"
                     error={!!errors.password}
@@ -52,11 +55,20 @@ const RegisterForm: React.VFC = () => {
                   />
                 )}
               />
-              {!!errors?.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
+              {!!errors?.password && (
+                <ErrorMessage data-testid="passwordErrorMessage">
+                  {errors.password.message}
+                </ErrorMessage>
+              )}
             </Grid>
           </Grid>
           <ButtonWrapper>
-            <StyledButton label="Register" type="submit" onClick={() => undefined} />
+            <StyledButton
+              data-testid="submitButton"
+              label="Register"
+              type="submit"
+              onClick={() => undefined}
+            />
           </ButtonWrapper>
         </form>
       </Container>

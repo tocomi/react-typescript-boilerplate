@@ -4,9 +4,6 @@ import React from 'react';
 export type BaseButtonProps = {
   label: string;
   onClick: () => void;
-  type?: React.ComponentProps<typeof Button>['type'];
-  variant?: React.ComponentProps<typeof Button>['variant'];
-  color?: React.ComponentProps<typeof Button>['color'];
 } & React.ComponentProps<typeof Button>;
 
 const BaseButton: React.VFC<BaseButtonProps> = ({
@@ -15,9 +12,10 @@ const BaseButton: React.VFC<BaseButtonProps> = ({
   type = 'button',
   variant = 'contained',
   color = 'primary',
+  ...restProps
 }) => {
   return (
-    <Button onClick={onClick} type={type} variant={variant} color={color}>
+    <Button onClick={onClick} type={type} variant={variant} color={color} {...restProps}>
       {label}
     </Button>
   );
