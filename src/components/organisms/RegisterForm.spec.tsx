@@ -1,4 +1,6 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { RegisterForm } from './RegisterForm';
 
@@ -6,14 +8,14 @@ describe('登録フォームのテスト', () => {
   test('正常にフォームの送信ができる', () => {
     const { unmount } = render(<RegisterForm />);
 
-    fireEvent.change(screen.getByTestId('email'), { target: { value: 'hoge@fuga.com' } });
-    fireEvent.change(screen.getByTestId('password'), { target: { value: 'hogefuga' } });
+    userEvent.type(screen.getByRole('textbox', { name: 'email' }), 'hoge@fuga.com');
+    userEvent.type(screen.getByLabelText('password'), 'hogefuga');
 
-    fireEvent.click(screen.getByTestId('submitButton'));
+    userEvent.click(screen.getByRole('button', { name: 'Register' }));
 
     // 入力が正しいのでエラーメッセージは表示されない
-    expect(screen.queryByTestId('emailErrorMessage')).toBeFalsy();
-    expect(screen.queryByTestId('passwordErrorMessage')).toBeFalsy();
+    expect(screen.queryByText('Email is required.')).not.toBeInTheDocument();
+    expect(screen.queryByText('Password is required.')).not.toBeInTheDocument();
 
     unmount();
   });
@@ -21,15 +23,13 @@ describe('登録フォームのテスト', () => {
   test('メールアドレスが空の場合はエラーになる', async () => {
     const { unmount } = render(<RegisterForm />);
 
-    fireEvent.change(screen.getByTestId('password'), { target: { value: 'hogefuga' } });
+    userEvent.type(screen.getByLabelText('password'), 'hogefuga');
 
-    fireEvent.click(screen.getByTestId('submitButton'));
-
-    await screen.findByTestId('emailErrorMessage');
+    userEvent.click(screen.getByRole('button', { name: 'Register' }));
 
     // メールアドレスのエラーのみ表示される
-    expect(screen.queryByTestId('emailErrorMessage')).toBeTruthy();
-    expect(screen.queryByTestId('passwordErrorMessage')).toBeFalsy();
+    expect(await screen.findByText('Email is required.')).toBeInTheDocument();
+    expect(screen.queryByText('Password is required.')).not.toBeInTheDocument();
 
     unmount();
   });
@@ -37,16 +37,14 @@ describe('登録フォームのテスト', () => {
   test('パスワードの文字数が満たない場合はエラーになる', async () => {
     const { unmount } = render(<RegisterForm />);
 
-    fireEvent.change(screen.getByTestId('email'), { target: { value: 'hoge@fuga.com' } });
-    fireEvent.change(screen.getByTestId('password'), { target: { value: '1234567' } });
+    userEvent.type(screen.getByRole('textbox', { name: 'email' }), 'hoge@fuga.com');
+    userEvent.type(screen.getByLabelText('password'), '1234567');
 
-    fireEvent.click(screen.getByTestId('submitButton'));
-
-    await screen.findByTestId('passwordErrorMessage');
+    userEvent.click(screen.getByRole('button', { name: 'Register' }));
 
     // パスワードの文字数が足りないためエラーが表示される
-    expect(screen.queryByTestId('emailErrorMessage')).toBeFalsy();
-    expect(screen.queryByTestId('passwordErrorMessage')).toBeTruthy();
+    expect(await screen.findByText('Password needs 8 characters at least.')).toBeInTheDocument();
+    expect(screen.queryByText('Email is required.')).not.toBeInTheDocument();
 
     unmount();
   });
@@ -54,13 +52,11 @@ describe('登録フォームのテスト', () => {
   test('メールアドレスとパスワードがどちらもからの場合は両方のエラーが表示される', async () => {
     const { unmount } = render(<RegisterForm />);
 
-    fireEvent.click(screen.getByTestId('submitButton'));
-
-    await screen.findByTestId('emailErrorMessage');
+    userEvent.click(screen.getByRole('button', { name: 'Register' }));
 
     // どちらのエラーメッセージも表示される
-    expect(screen.queryByTestId('emailErrorMessage')).toBeTruthy();
-    expect(screen.queryByTestId('passwordErrorMessage')).toBeTruthy();
+    expect(await screen.findByText('Email is required.')).toBeInTheDocument();
+    expect(await screen.findByText('Password is required.')).toBeInTheDocument();
 
     unmount();
   });
