@@ -8,16 +8,11 @@ export const theme = createTheme({
   },
   palette: {
     primary: {
-      light: '#58a5f0',
       main: '#0277bd',
-      dark: '#004c8c',
-      contrastText: '#fff',
     },
     secondary: {
-      light: '#ffc947',
-      main: '#ff9800',
-      dark: '#c66900',
-      contrastText: '#000',
+      main: '#ff7f3f',
+      contrastText: 'white',
     },
   },
 });
