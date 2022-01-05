@@ -1,4 +1,4 @@
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography } from '@mui/material';
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import styled from 'styled-components';
@@ -21,7 +21,7 @@ const RegisterForm: React.VFC = () => {
     <Wrapper>
       <Container>
         <form onSubmit={handleSubmit((data) => console.log(data))}>
-          <Grid container spacing={4} justify="center" alignItems="center">
+          <Grid container spacing={4} justifyContent="center" alignItems="center">
             <Grid item xs={12}>
               <Controller
                 name="email"

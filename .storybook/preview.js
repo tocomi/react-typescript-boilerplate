@@ -1,7 +1,7 @@
 import { addDecorator } from '@storybook/react';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@mui/material';
 
-import { theme } from '../src/material-ui/theme';
+import { theme } from '../src/mui/theme';
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

@@ -1,8 +1,8 @@
-import { createMuiTheme } from '@material-ui/core';
+import { createTheme } from '@mui/material/styles';
 
 const fontFamily = "'Noto Sans JP', 'Noto Sans'";
 
-export const theme = createMuiTheme({
+export const theme = createTheme({
   typography: {
     fontFamily,
   },

@@ -1,9 +1,10 @@
-import { StylesProvider, ThemeProvider } from '@material-ui/styles';
+import { ThemeProvider } from '@mui/material';
+import { StylesProvider } from '@mui/styles';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { theme } from './material-ui/theme';
+import { theme } from './mui/theme';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
