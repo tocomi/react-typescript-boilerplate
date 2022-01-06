@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { BaseButton } from './components/atoms/BaseButton';
+import { BaseButton } from './components';
 
 const App = () => {
   const handleClick = useCallback(() => {
