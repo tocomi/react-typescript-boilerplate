@@ -1,21 +1,21 @@
-import { Grid, Typography } from '@mui/material';
-import React from 'react';
-import { Controller, useForm } from 'react-hook-form';
-import styled from 'styled-components';
-import { BaseButton } from '../atoms/BaseButton';
-import { BaseInput } from '../atoms/BaseInput';
+import { Grid, Typography } from '@mui/material'
+import React from 'react'
+import { Controller, useForm } from 'react-hook-form'
+import styled from 'styled-components'
+import { BaseButton } from '../atoms/BaseButton'
+import { BaseInput } from '../atoms/BaseInput'
 
 type FormValues = {
-  email: string;
-  password: string;
-};
+  email: string
+  password: string
+}
 
 const RegisterForm: React.VFC = () => {
   const {
     control,
     formState: { errors },
     handleSubmit,
-  } = useForm<FormValues>({ mode: 'onBlur' });
+  } = useForm<FormValues>({ mode: 'onBlur' })
 
   return (
     <Wrapper>
@@ -62,14 +62,14 @@ const RegisterForm: React.VFC = () => {
         </form>
       </Container>
     </Wrapper>
-  );
-};
+  )
+}
 
 const Wrapper = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
-`;
+`
 
 const Container = styled.div`
   border: 4px solid #999;
@@ -77,27 +77,27 @@ const Container = styled.div`
   height: 360px;
   padding: 80px 96px;
   width: 400px;
-`;
+`
 
 const ButtonWrapper = styled.div`
   margin-top: 48px;
   text-align: center;
-`;
+`
 
 const ErrorMessage = styled(Typography)`
   && {
     font-size: 12px;
     color: #f44336;
   }
-`;
+`
 
 const StyledInput = styled(BaseInput)`
   width: 100%;
-`;
+`
 
 const StyledButton = styled(BaseButton)`
   width: 240px;
-`;
+`
 
-const memorizedRegisterForm = React.memo(RegisterForm);
-export { memorizedRegisterForm as RegisterForm };
+const memorizedRegisterForm = React.memo(RegisterForm)
+export { memorizedRegisterForm as RegisterForm }

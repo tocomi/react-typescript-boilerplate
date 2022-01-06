@@ -1,8 +1,8 @@
-import { TextField } from '@mui/material';
-import React from 'react';
-import styled from 'styled-components';
+import { TextField } from '@mui/material'
+import React from 'react'
+import styled from 'styled-components'
 
-export type BaseInputProps = { 'aria-label'?: string } & React.ComponentProps<typeof TextField>;
+export type BaseInputProps = { 'aria-label'?: string } & React.ComponentProps<typeof TextField>
 
 const BaseInput = React.forwardRef<HTMLDivElement, BaseInputProps>(
   ({ 'aria-label': ariaLabel, variant = 'outlined', ...restProps }, ref) => {
@@ -13,9 +13,9 @@ const BaseInput = React.forwardRef<HTMLDivElement, BaseInputProps>(
         inputProps={{ 'aria-label': ariaLabel }}
         {...restProps}
       />
-    );
+    )
   }
-);
+)
 
 const StyledTextField = styled(TextField)`
   .MuiOutlinedInput-notchedOutline {
@@ -24,7 +24,7 @@ const StyledTextField = styled(TextField)`
   .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
     border-width: 3px;
   }
-`;
+`
 
-const memorizedBaseInput = React.memo(BaseInput);
-export { memorizedBaseInput as BaseInput };
+const memorizedBaseInput = React.memo(BaseInput)
+export { memorizedBaseInput as BaseInput }

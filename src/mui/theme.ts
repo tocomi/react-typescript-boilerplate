@@ -1,6 +1,6 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles'
 
-const fontFamily = "'Noto Sans JP', 'Noto Sans'";
+const fontFamily = "'Noto Sans JP', 'Noto Sans'"
 
 export const theme = createTheme({
   typography: {
@@ -15,4 +15,4 @@ export const theme = createTheme({
       contrastText: 'white',
     },
   },
-});
+})

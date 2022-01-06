@@ -1,10 +1,10 @@
-import { useCallback } from 'react';
-import { BaseButton } from './components';
+import { useCallback } from 'react'
+import { BaseButton } from './components'
 
 const App = () => {
   const handleClick = useCallback(() => {
-    alert('click!!');
-  }, []);
+    alert('click!!')
+  }, [])
   return (
     <div className="App">
       <header>
@@ -14,7 +14,7 @@ const App = () => {
         <BaseButton label="click" onClick={handleClick} />
       </main>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App

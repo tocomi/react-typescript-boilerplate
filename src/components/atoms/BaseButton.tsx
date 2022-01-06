@@ -1,10 +1,10 @@
-import { Button } from '@mui/material';
-import React from 'react';
+import { Button } from '@mui/material'
+import React from 'react'
 
 export type BaseButtonProps = {
-  label: string;
-  onClick: () => void;
-} & React.ComponentProps<typeof Button>;
+  label: string
+  onClick: () => void
+} & React.ComponentProps<typeof Button>
 
 const BaseButton: React.VFC<BaseButtonProps> = ({
   label,
@@ -18,8 +18,8 @@ const BaseButton: React.VFC<BaseButtonProps> = ({
     <Button onClick={onClick} type={type} variant={variant} color={color} {...restProps}>
       {label}
     </Button>
-  );
-};
+  )
+}
 
-const memorizedBaseButton = React.memo(BaseButton);
-export { memorizedBaseButton as BaseButton };
+const memorizedBaseButton = React.memo(BaseButton)
+export { memorizedBaseButton as BaseButton }
