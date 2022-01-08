@@ -18,11 +18,6 @@ export default {
         options: ['primary', 'secondary'],
       },
     },
-    isLoading: {
-      control: {
-        type: 'boolean',
-      },
-    },
   },
 } as Meta
 
@@ -43,7 +38,6 @@ Contained.args = {
   label: 'Contained',
   variant: 'contained',
   color: 'primary',
-  isLoading: false,
 }
 
 export const Outlined = Template.bind({})
@@ -51,7 +45,6 @@ Outlined.args = {
   label: 'Outlined',
   variant: 'outlined',
   color: 'primary',
-  isLoading: false,
 }
 
 export const Text = Template.bind({})
@@ -59,5 +52,4 @@ Text.args = {
   label: 'Text',
   variant: 'text',
   color: 'primary',
-  isLoading: false,
 }

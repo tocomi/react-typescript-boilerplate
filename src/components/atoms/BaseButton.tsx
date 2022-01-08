@@ -26,7 +26,7 @@ const BaseButton: React.VFC<BaseButtonProps> = ({
       disabled={isLoading}
       {...restProps}
     >
-      {isLoading ? <CircularProgress size={24} /> : <>{label}</>}
+      {isLoading ? <CircularProgress size={24} color={color} /> : <>{label}</>}
     </StyledButton>
   )
 }
