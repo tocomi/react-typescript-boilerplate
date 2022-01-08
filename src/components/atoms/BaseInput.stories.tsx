@@ -20,22 +20,19 @@ export const Outlined = Template.bind({})
 Outlined.args = {
   label: 'outlined',
   variant: 'outlined',
-}
-
-export const Disabled = Template.bind({})
-Disabled.args = {
-  label: 'disabled',
-  disabled: true,
+  disabled: false,
 }
 
 export const Standard = Template.bind({})
 Standard.args = {
   label: 'standard',
   variant: 'standard',
+  disabled: false,
 }
 
 export const Filled = Template.bind({})
 Filled.args = {
   label: 'filled',
   variant: 'filled',
+  disabled: false,
 }
